@@ -108,7 +108,8 @@ Based on [https://goessner.net/articles/JsonPath](https://goessner.net/articles/
 
 | Operator | Name | Description |
 |-|-|-|
-| `.` or `[]` | child operator | Allows access to child elements |
+| `.` | child operator | Allows access to child elements |
+| `[]` | array access operator | Allows access to array elements |
 | `..` | recursive descent | Matches all children in the current element and recurses further operators |
 | `[,]` | array set | Allows to specify a list of indices to capture |
 | `[(start):(end)(:step)]` | array slice |  Allows to capture a consecutive number of array elements between `start` (inclusive) and `end` (exclusive). Optionally each *`step`-th* element is captured |
@@ -121,7 +122,7 @@ Based on [https://goessner.net/articles/JsonPath](https://goessner.net/articles/
 |-|-|
 | `ingredient.Enchantments[0].id` | Gets the id of the first enchantment |
 | `ingredient.Enchantments[:].id` | Targets all enchantment ids |
-| `ingredient[Damage]` or `ingredient.Damage` | Gets the `Damage` value | 
+| `ingredient` or `ingredient.Damage` | Gets the `Damage` value | 
 | `$..Damage` | Targets the `Damage` values of all ingredients |
 
 # Hello, New World!
