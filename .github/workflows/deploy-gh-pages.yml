@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy:
-     runs-on: pandoc/alpine-latex
+     container: pandoc/alpine-latex
      steps:
       - name: Checkout
         uses: actions/checkout@v2
