@@ -7,17 +7,21 @@ on:
 jobs:
   deploy:
      runs-on: ubuntu-latest
-     container: pandoc/alpine-latex
      steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - run: mkdir out
+      - name: Build HTML  
       - name: Build Pandoc
-        run: |
-          mkdir out
-          pandoc -d pandoc/pandoc -t html5 -o out/index.html -B pandoc/html-prefix.md
-          pandoc -d pandoc/pandoc -t pdf -o out/proposal.pdf
+        uses: docker://pandoc/core:2.11
+        with:
+          args: -d pandoc/pandoc -t html5 -o out/index.html -B pandoc/html-prefix.md
+      - name: Build PDF
+        uses: docker://pandoc/latex:2.11
+        with:
+          args: -d pandoc/pandoc -t pdf -o out/proposal.pdf
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
