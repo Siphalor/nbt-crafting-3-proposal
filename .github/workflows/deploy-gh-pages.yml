@@ -1,0 +1,25 @@
+name: Deploy to gh-pages
+
+on:
+  push:
+    branches: main
+
+jobs:
+  deploy:
+     runs-on: pandoc/alpine-latex
+     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Build Pandoc
+        run: |
+          mkdir out
+          pandoc -d pandoc/pandoc -t html5 -o out/index.html -B pandoc/html-prefix.md
+          pandoc -d pandoc/pandoc -t pdf -o out/proposal.pdf
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+        
