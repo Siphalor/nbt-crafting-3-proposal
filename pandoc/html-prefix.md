@@ -1,1 +1,1 @@
-See the PDF version [here](https://siphalor.github.io/nbt-crafting-3-proposal/proposal.pdf).
+See the PDF version <a href="https://siphalor.github.io/nbt-crafting-3-proposal/proposal.pdf">here</a>.
